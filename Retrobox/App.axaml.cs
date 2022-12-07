@@ -1,8 +1,13 @@
 using Avalonia;
-using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Retrobox.ViewModels;
 using Retrobox.Views;
+using System;
+using System.IO;
+using Toolkit.Foundation;
+using Toolkit.Foundation.Avalonia;
 
 namespace Retrobox;
 
@@ -13,23 +18,36 @@ public partial class App : Application
         AvaloniaXamlLoader.Load(this);
     }
 
-    public override void OnFrameworkInitializationCompleted()
+    public override async void OnFrameworkInitializationCompleted()
     {
-        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-        {
-            desktop.MainWindow = new MainWindow
-            {
-                DataContext = new MainViewModel()
-            };
-        }
-        else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
-        {
-            singleViewPlatform.MainView = new MainView
-            {
-                DataContext = new MainViewModel()
-            };
-        }
-
         base.OnFrameworkInitializationCompleted();
+
+        IHost? host = new HostBuilder()
+            .UseContentRoot(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Retrobox"), true)
+                           .ConfigureAppConfiguration((context, configuration) =>
+                           {
+                               configuration.AddWritableJsonFile("Settings.json", false, true, writableConfiguration =>
+                               {
+
+                               });
+
+                           })
+            .ConfigureTemplates(configuration =>
+            {
+                configuration.Add<MainViewModel, MainWindow>();
+                configuration.Add<MainViewModel, MainView>("Main");
+            })
+            .ConfigureServices(ConfigureServices)
+            .Build();
+
+        await host.RunAsync();
+
+    }
+
+    private void ConfigureServices(HostBuilderContext context, IServiceCollection services)
+    {
+        services.AddHostedService<AppService>()
+            .AddFoundation()
+            .AddMediator(options => options.ServiceLifetime = ServiceLifetime.Transient);
     }
 }

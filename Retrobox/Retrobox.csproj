@@ -15,6 +15,24 @@
     <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
+    <PackageReference Include="JsonPatch.Net" Version="2.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
+    <PackageReference Include="Mediator.Abstractions" Version="2.1.0-preview.5" />
+    <PackageReference Include="Mediator.SourceGenerator" Version="2.1.0-preview.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="XamlNameReferenceGenerator" Version="1.3.4" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Toolkit.Foundation">
+      <HintPath>..\Toolkit\Toolkit.Foundation.Avalonia\bin\Release\net7.0\Toolkit.Foundation.dll</HintPath>
+    </Reference>
+    <Reference Include="Toolkit.Foundation.Avalonia">
+      <HintPath>..\Toolkit\Toolkit.Foundation.Avalonia\bin\Release\net7.0\Toolkit.Foundation.Avalonia.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  
 </Project>
