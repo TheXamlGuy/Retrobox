@@ -24,14 +24,14 @@ public partial class App : Application
 
         IHost? host = new HostBuilder()
             .UseContentRoot(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Retrobox"), true)
-                           .ConfigureAppConfiguration((context, configuration) =>
-                           {
-                               configuration.AddWritableJsonFile("Settings.json", false, true, writableConfiguration =>
-                               {
+            .ConfigureAppConfiguration((context, configuration) =>
+            {
+                configuration.AddWritableJsonFile("Settings.json", false, true, writableConfiguration =>
+                {
 
-                               });
+                });
 
-                           })
+            })
             .ConfigureTemplates(configuration =>
             {
                 configuration.Add<MainViewModel, MainWindow>();
@@ -41,7 +41,6 @@ public partial class App : Application
             .Build();
 
         await host.RunAsync();
-
     }
 
     private void ConfigureServices(HostBuilderContext context, IServiceCollection services)
