@@ -5,7 +5,6 @@ using Toolkit.Foundation;
 
 namespace Domain.Requests
 {
-
     public class PlatformQueryHandler : IQueryHandler<PlatformQuery, IReadOnlyCollection<Platform>>
     {
         private readonly IServiceFactory factory;
