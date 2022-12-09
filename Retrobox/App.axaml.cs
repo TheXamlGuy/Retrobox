@@ -1,5 +1,7 @@
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using Mediator;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Retrobox.ViewModels;
@@ -8,9 +10,12 @@ using System;
 using System.IO;
 using Toolkit.Foundation;
 using Toolkit.Foundation.Avalonia;
+using Avalonia.Markup.Xaml.Templates;
+using System.Reflection.Metadata;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using FluentAvalonia.UI.Controls;
 
 namespace Retrobox;
-
 public partial class App : Application
 {
     public override void Initialize()
@@ -34,11 +39,11 @@ public partial class App : Application
             })
             .ConfigureTemplates(configuration =>
             {
-                configuration.Add<MainViewModel, MainWindow>();
+                configuration.Add<MainWindowModel, MainWindow>();
                 configuration.Add<MainViewModel, MainView>("Main");
             })
             .ConfigureServices(ConfigureServices)
-            .Build();
+        .Build();
 
         await host.RunAsync();
     }
@@ -47,6 +52,7 @@ public partial class App : Application
     {
         services.AddHostedService<AppService>()
             .AddFoundation()
+            .AddNavigation()
             .AddMediator(options => options.ServiceLifetime = ServiceLifetime.Transient);
     }
 }

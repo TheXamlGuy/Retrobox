@@ -3,20 +3,25 @@ using System.Threading.Tasks;
 using System.Threading;
 using Avalonia.Controls;
 using Retrobox.Views;
+using Retrobox.ViewModels;
 
 namespace Retrobox;
 
 public class MainViewActivationHandler : IRequestHandler<MainViewActivation, Control>
 {
-    private readonly MainView mainView;
+    private readonly MainView view;
+    private readonly MainViewModel viewModel;
 
-    public MainViewActivationHandler(MainView mainView)
+    public MainViewActivationHandler(MainView view, 
+        MainViewModel viewModel)
     {
-        this.mainView = mainView;
+        this.view = view;
+        this.viewModel = viewModel;
     }
 
     public async ValueTask<Control> Handle(MainViewActivation request, CancellationToken cancellationToken)
     {
-        return await Task.FromResult(mainView);
+        view.DataContext = viewModel;
+        return await Task.FromResult(view);
     }
 }
