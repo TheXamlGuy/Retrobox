@@ -1,15 +1,15 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Mediator;
 
-namespace Retrobox.ViewModels;
+namespace Retrobox.Framework.Foundation;
 
 [ObservableObject]
-public partial class MainViewModel
+public partial class MainWindowModel
 {
     [ObservableProperty]
     private IMediator? mediator;
 
-    public MainViewModel(IMediator mediator)
+    public MainWindowModel(IMediator mediator)
     {
         this.mediator = mediator;
     }

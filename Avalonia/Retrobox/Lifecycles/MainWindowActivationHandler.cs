@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using Retrobox.Views;
 using Avalonia.Controls;
-using Retrobox.ViewModels;
+using Retrobox.Framework.Foundation;
 
 namespace Retrobox;
 

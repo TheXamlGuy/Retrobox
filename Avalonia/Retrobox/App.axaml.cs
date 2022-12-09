@@ -1,19 +1,13 @@
 using Avalonia;
-using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using Mediator;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Retrobox.ViewModels;
 using Retrobox.Views;
 using System;
 using System.IO;
 using Toolkit.Foundation;
 using Toolkit.Foundation.Avalonia;
-using Avalonia.Markup.Xaml.Templates;
-using System.Reflection.Metadata;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using FluentAvalonia.UI.Controls;
+using Retrobox.Framework.Foundation;
 
 namespace Retrobox;
 public partial class App : Application
