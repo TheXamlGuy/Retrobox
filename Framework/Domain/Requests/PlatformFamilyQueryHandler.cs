@@ -4,28 +4,24 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
 using Toolkit.Foundation;
 
-namespace Domain.Requests
+namespace Retrobox.Framework.Domain;
+
+public class PlatformFamilyQueryHandler : IQueryHandler<PlatformFamilyQuery, IReadOnlyCollection<PlatformFamily>>
 {
-    public class PlatformFamilyQueryHandler : IQueryHandler<PlatformFamilyQuery, IReadOnlyCollection<PlatformFamily>>
+    private readonly IDbContextFactory<RetroboxContext> factory;
+
+    public PlatformFamilyQueryHandler(IDbContextFactory<RetroboxContext> factory)
     {
-        private readonly IServiceFactory factory;
+        this.factory = factory;
+    }
 
-        public PlatformFamilyQueryHandler(IServiceFactory factory)
-        {
-            this.factory = factory;
-        }
+    public async ValueTask<IReadOnlyCollection<PlatformFamily>> Handle(PlatformFamilyQuery query, CancellationToken cancellationToken)
+    {
+        List<PlatformFamily> result = new();
 
-        public async ValueTask<IReadOnlyCollection<PlatformFamily>> Handle(PlatformFamilyQuery query, CancellationToken cancellationToken)
-        {
-            List<PlatformFamily> result = new();
+        using RetroboxContext? context = await factory.CreateDbContextAsync();
+        result.AddRange(await context.PlatformFamilies.Include(x => x.Platforms).Select(x => new PlatformFamily(x.Name, new ReadOnlyCollection<Platform>(x.Platforms.Select(x => new Platform(x.Name)).ToList()))).ToListAsync(cancellationToken: cancellationToken));
 
-            using RetroboxContext? context = factory.Create<RetroboxContext>()!;
-
-            await context.Platforms.GroupBy(x => x.Family).Select(x => new PlatformFamily(x.Key, new ReadOnlyCollection<Platform>(x.Select(x => new Platform(x.Name)).ToList()))).ToListAsync();
-
-            result.AddRange(await context.Platforms.GroupBy(x => x.Family).Select(x => new PlatformFamily(x.Key, x.Select(x => new Platform(x.Name)).ToListAsync(cancellationToken));
-
-            return result;
-        }
+        return result;
     }
 }

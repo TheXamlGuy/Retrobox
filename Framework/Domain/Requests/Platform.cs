@@ -1,4 +1,3 @@
-﻿namespace Domain.Requests
-{
-    public record Platform(string? Name);
-}
+﻿namespace Retrobox.Framework.Domain;
+
+public record Platform(string? Name);

@@ -1,7 +1,5 @@
 ﻿using Mediator;
 
-namespace Domain.Requests
-{
-    public record GameQuery : IQuery<IReadOnlyCollection<Game>>;
+namespace Retrobox.Framework.Domain;
 
-}
+public record GameQuery : IQuery<IReadOnlyCollection<Game>>;

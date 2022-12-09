@@ -1,6 +1,5 @@
 ﻿using Mediator;
 
-namespace Domain.Requests
-{
-    public record PlatformQuery : IQuery<IReadOnlyCollection<Platform>>;
-}
+namespace Retrobox.Framework.Domain;
+
+public record PlatformQuery : IQuery<IReadOnlyCollection<Platform>>;

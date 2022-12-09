@@ -1,5 +1,3 @@
-﻿namespace Domain.Requests
-{
-    public record Game;
+﻿namespace Retrobox.Framework.Domain;
 
-}
+public record Game;

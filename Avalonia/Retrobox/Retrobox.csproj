@@ -28,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Framework\Domain\Domain.csproj" />
     <ProjectReference Include="..\..\Framework\Foundation\Foundation.csproj" />
   </ItemGroup>
 

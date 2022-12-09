@@ -8,8 +8,11 @@ using System.IO;
 using Toolkit.Foundation;
 using Toolkit.Foundation.Avalonia;
 using Retrobox.Framework.Foundation;
+using Retrobox.Framework.Domain;
+using Mediator;
 
 namespace Retrobox;
+
 public partial class App : Application
 {
     public override void Initialize()
@@ -41,12 +44,12 @@ public partial class App : Application
 
         await host.RunAsync();
     }
-
     private void ConfigureServices(HostBuilderContext context, IServiceCollection services)
     {
         services.AddHostedService<AppService>()
             .AddFoundation()
             .AddNavigation()
+            .AddDomain()
             .AddMediator(options => options.ServiceLifetime = ServiceLifetime.Transient);
     }
 }

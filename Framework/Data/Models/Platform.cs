@@ -9,7 +9,9 @@ namespace Data
 
         public string? Name { get; set; }
 
-        public string? Family { get; set; }
+        public Guid FamilyId { get; set; }
+
+        public PlatformFamily? Family { get; set; }
 
         public List<Game> Games { get; } = new();
     }

@@ -1,4 +1,3 @@
-﻿namespace Domain.Requests
-{
-    public record PlatformFamily(string? Name, IReadOnlyCollection<Platform> Platforms);
-}
+﻿namespace Retrobox.Framework.Domain;
+
+public record PlatformFamily(string? Name, IReadOnlyCollection<Platform> Platforms);
