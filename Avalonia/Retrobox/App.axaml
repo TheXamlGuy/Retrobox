@@ -6,5 +6,7 @@
     xmlns:local="using:Retrobox">
     <Application.Styles>
         <fluent:FluentAvaloniaTheme />
+        <StyleInclude Source="avares://FluentAvalonia.UI.Windowing/Styles/FAWindowingStyles.axaml" />
+        <StyleInclude Source="avares://Toolkit.Controls.Avalonia/Themes/ControlResources.axaml" />
     </Application.Styles>
 </Application>

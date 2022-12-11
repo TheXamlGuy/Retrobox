@@ -2,7 +2,6 @@
 using Mediator;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.ObjectModel;
-using Toolkit.Foundation;
 
 namespace Retrobox.Framework.Domain;
 
@@ -19,7 +18,7 @@ public class PlatformFamilyQueryHandler : IQueryHandler<PlatformFamilyQuery, IRe
     {
         List<PlatformFamily> result = new();
 
-        using RetroboxContext? context = await factory.CreateDbContextAsync();
+        using RetroboxContext? context = await factory.CreateDbContextAsync(cancellationToken);
         result.AddRange(await context.PlatformFamilies.Include(x => x.Platforms).Select(x => new PlatformFamily(x.Name, new ReadOnlyCollection<Platform>(x.Platforms.Select(x => new Platform(x.Name)).ToList()))).ToListAsync(cancellationToken: cancellationToken));
 
         return result;

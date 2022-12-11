@@ -1,7 +1,7 @@
 ﻿using Data;
 using Mediator;
 using Microsoft.EntityFrameworkCore;
-using Toolkit.Foundation;
+using Toolkit.Framework.Foundation;
 
 namespace Retrobox.Framework.Domain;
 

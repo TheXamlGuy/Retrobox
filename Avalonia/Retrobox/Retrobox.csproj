@@ -15,6 +15,7 @@
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0-preview1" />
+    <PackageReference Include="FluentAvalonia.UI.Windowing" Version="2.0.0-preview4" />
     <PackageReference Include="FluentAvaloniaUI" Version="2.0.0-preview4" />
     <PackageReference Include="JsonPatch.Net" Version="2.0.4" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
@@ -33,12 +34,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Toolkit.Foundation">
-      <HintPath>..\..\Toolkit\Toolkit.Foundation.Avalonia\bin\Release\net7.0\Toolkit.Foundation.dll</HintPath>
+    <Reference Include="Toolkit.Controls.Avalonia">
+      <HintPath>..\..\Toolkit\Controls\Avalonia\bin\Release\net7.0\Toolkit.Controls.Avalonia.dll</HintPath>
     </Reference>
-    <Reference Include="Toolkit.Foundation.Avalonia">
-      <HintPath>..\..\Toolkit\Toolkit.Foundation.Avalonia\bin\Release\net7.0\Toolkit.Foundation.Avalonia.dll</HintPath>
+    <Reference Include="Toolkit.Framework.Avalonia">
+      <HintPath>..\..\Toolkit\Framework\Avalonia\bin\Release\net7.0\Toolkit.Framework.Avalonia.dll</HintPath>
     </Reference>
+    <Reference Include="Toolkit.Framework.Foundation">
+      <HintPath>..\..\Toolkit\Framework\Avalonia\bin\Release\net7.0\Toolkit.Framework.Foundation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\MenuItemView.axaml.cs">
+      <DependentUpon>MenuItemView.axaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   
 </Project>

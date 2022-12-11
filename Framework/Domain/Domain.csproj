@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Toolkit.Foundation">
-      <HintPath>..\..\Toolkit\Toolkit.Foundation\bin\Release\net7.0\Toolkit.Foundation.dll</HintPath>
+    <Reference Include="Toolkit.Framework.Foundation">
+      <HintPath>..\..\Toolkit\Framework\Foundation\bin\Release\net7.0\Toolkit.Framework.Foundation.dll</HintPath>
     </Reference>
   </ItemGroup>
   

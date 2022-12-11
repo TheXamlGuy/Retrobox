@@ -1,0 +1,10 @@
+<NavigationViewItem
+    x:Class="Retrobox.MenuItemView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Content="{Binding Name}"
+    SelectsOnInvoked="False">
+    <NavigationViewItem.Icon>
+        <ContentIcon Icon="{Binding Icon}" IconTemplate="{Binding TemplateSelector}" />
+    </NavigationViewItem.Icon>
+</NavigationViewItem>

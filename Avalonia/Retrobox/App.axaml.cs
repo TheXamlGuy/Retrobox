@@ -5,11 +5,10 @@ using Microsoft.Extensions.Hosting;
 using Retrobox.Views;
 using System;
 using System.IO;
-using Toolkit.Foundation;
-using Toolkit.Foundation.Avalonia;
 using Retrobox.Framework.Foundation;
 using Retrobox.Framework.Domain;
-using Mediator;
+using Toolkit.Framework.Foundation;
+using Toolkit.Framework.Avalonia;
 
 namespace Retrobox;
 
@@ -38,6 +37,9 @@ public partial class App : Application
             {
                 configuration.Add<MainWindowModel, MainWindow>();
                 configuration.Add<MainViewModel, MainView>("Main");
+                configuration.Add<MenuItemViewModel, MenuItemView>();
+                configuration.Add<AddPlatformIconViewModel, AddPlatformIconView>();
+                configuration.Add<AddPlatformViewModel, AddPlatformView>();
             })
             .ConfigureServices(ConfigureServices)
         .Build();
@@ -50,6 +52,8 @@ public partial class App : Application
             .AddFoundation()
             .AddNavigation()
             .AddDomain()
-            .AddMediator(options => options.ServiceLifetime = ServiceLifetime.Transient);
+            .AddMediator(options => options.ServiceLifetime = ServiceLifetime.Transient)
+            .AddSingleton<MenuCollectionViewModel>()
+            .AddSingleton<FooterCollectionViewModel>();
     }
 }

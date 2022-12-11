@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Toolkit.Foundation;
+using Toolkit.Framework.Foundation;
 
 namespace Data
 {

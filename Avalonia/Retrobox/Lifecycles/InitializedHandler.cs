@@ -1,11 +1,9 @@
-﻿using Toolkit.Foundation;
-using Mediator;
+﻿using Mediator;
 using System.Threading.Tasks;
 using System.Threading;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia;
-using Microsoft.Extensions.Hosting;
-using Retrobox.Framework.Domain;
+using Toolkit.Framework.Foundation;
 
 namespace Retrobox;
 
@@ -20,8 +18,6 @@ public class InitializedHandler : IRequestHandler<Initialized>
 
     public async ValueTask<Unit> Handle(Initialized request, CancellationToken cancellationToken)
     {
-        var v = await mediator.Send(new PlatformFamilyQuery());
-
         if (Application.Current is App app)
         {
             if (app.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime classicDesktopStyleApplicationLifetime)
@@ -34,6 +30,7 @@ public class InitializedHandler : IRequestHandler<Initialized>
                 singleViewApplicationLifetime.MainView = await mediator.Send(new MainViewActivation(), cancellationToken);
             }
         }
+
 
         return default;
     }
