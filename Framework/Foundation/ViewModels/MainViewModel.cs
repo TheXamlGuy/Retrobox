@@ -8,7 +8,7 @@ namespace Retrobox.Framework.Foundation;
 public partial class MainViewModel
 {
     [ObservableProperty]
-    private ITemplateSelector templateSelector;
+    private IContentTemplateSelector templateSelector;
 
     [ObservableProperty]
     private IMediator? mediator;
@@ -19,8 +19,8 @@ public partial class MainViewModel
     [ObservableProperty]
     private FooterCollectionViewModel footer;
 
-    public MainViewModel(IMediator mediator, 
-        ITemplateSelector templateSelector,
+    public MainViewModel(IMediator mediator,
+        IContentTemplateSelector templateSelector,
         MenuCollectionViewModel menu,
         FooterCollectionViewModel footer)
     {

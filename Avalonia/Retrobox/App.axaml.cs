@@ -38,7 +38,12 @@ public partial class App : Application
                 configuration.Add<MainWindowModel, MainWindow>();
                 configuration.Add<MainViewModel, MainView>("Main");
                 configuration.Add<MenuItemViewModel, MenuItemView>();
-                configuration.Add<AddPlatformIconViewModel, AddPlatformIconView>();
+                configuration.Add<SegaIconViewModel, SegaIconView>("SegaIcon");
+                configuration.Add<NintendoIconViewModel, NintendoIconView>("NintendoIcon");
+                configuration.Add<PlaystationIconViewModel, PlaystationIconView>("PlaystationIcon");
+                configuration.Add<XboxIconViewModel, XboxIconView>("XboxIcon");
+                configuration.Add<PersonalComputerIconViewModel, PersonalComputerView>("PCIcon");
+                configuration.Add<AddPlatformIconViewModel, AddPlatformIconView>("AddIcon");
                 configuration.Add<AddPlatformViewModel, AddPlatformView>();
             })
             .ConfigureServices(ConfigureServices)

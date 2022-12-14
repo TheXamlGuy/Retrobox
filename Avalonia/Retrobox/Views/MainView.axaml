@@ -1,10 +1,146 @@
 <UserControl
     x:Class="Retrobox.Views.MainView"
     xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <NavigationView
-        FooterMenuItems="{Binding Footer}"
-        MenuItemTemplate="{Binding TemplateSelector}"
-        MenuItems="{Binding Menu}">
-    </NavigationView>
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="using:FluentAvalonia.UI.Controls"
+    xmlns:uip="using:FluentAvalonia.UI.Controls.Primitives"
+    xmlns:wnd="using:FluentAvalonia.UI.Windowing">
+    <UserControl.Styles>
+        <Style Selector="ui|NavigationViewItem">
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+        </Style>
+        <Style Selector="ui|NavigationViewItem uip|NavigationViewItemPresenter Path">
+            <Setter Property="Fill" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+            <Setter Property="Stroke" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+        </Style>
+        <Style Selector="ui|NavigationViewItem uip|NavigationViewItemPresenter">
+            <Setter Property="MinHeight" Value="58" />
+            <Setter Property="CornerRadius" Value="{StaticResource ControlCornerRadius}" />
+            <Setter Property="Template">
+                <ControlTemplate>
+                    <Border
+                        Name="LayoutRoot"
+                        Margin="5,0,4,4"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="{TemplateBinding CornerRadius}"
+                        TemplatedControl.IsTemplateFocusTarget="True">
+                        <Grid>
+                            <Border
+                                Name="SelectionIndicator"
+                                HorizontalAlignment="Left"
+                                Opacity="0">
+                                <Rectangle
+                                    Width="4"
+                                    Height="24"
+                                    VerticalAlignment="Center"
+                                    Fill="{DynamicResource NavigationViewSelectionIndicatorForeground}"
+                                    RadiusX="2"
+                                    RadiusY="2" />
+                            </Border>
+                            <Grid RowDefinitions="1*, 1*, Auto, 1*">
+                                <Viewbox
+                                    Name="IconBox"
+                                    Grid.Row="1"
+                                    Height="20"
+                                    Margin="0,6,0,6"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center">
+                                    <ContentPresenter
+                                        Name="Icon"
+                                        Content="{TemplateBinding Icon}"
+                                        Foreground="{TemplateBinding Foreground}" />
+                                </Viewbox>
+                                <Viewbox Grid.Row="2" StretchDirection="DownOnly">
+                                    <Border>
+                                        <ContentPresenter
+                                            Name="ContentPresenter"
+                                            Content="{TemplateBinding Content}"
+                                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                                            FontSize="10"
+                                            Foreground="{TemplateBinding Foreground}">
+                                            <ContentPresenter.Styles>
+                                                <Style Selector="TextBlock">
+                                                    <Setter Property="TextWrapping" Value="Wrap" />
+                                                </Style>
+                                            </ContentPresenter.Styles>
+                                        </ContentPresenter>
+                                    </Border>
+                                </Viewbox>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter>
+        </Style>
+        <Style Selector="ui|NavigationViewItem uip|NavigationViewItemPresenter:pointerover Path">
+            <Setter Property="Fill" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+            <Setter Property="Stroke" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+        </Style>
+        <Style Selector="ui|NavigationViewItem uip|NavigationViewItemPresenter:pointerover /template/ ContentPresenter#ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+        </Style>
+        <Style Selector="ui|NavigationViewItem uip|NavigationViewItemPresenter:pointerover /template/ ContentPresenter#Icon">
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
+        </Style>
+        <Style Selector="ui|NavigationViewItem uip|NavigationViewItemPresenter:pressed Path">
+            <Setter Property="Fill" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+            <Setter Property="Stroke" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+        </Style>
+        <Style Selector="ui|NavigationViewItem uip|NavigationViewItemPresenter:pressed /template/ ContentPresenter#ContentPresenter">
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+        </Style>
+        <Style Selector="ui|NavigationViewItem uip|NavigationViewItemPresenter:pressed /template/ ContentPresenter#Icon">
+            <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
+        </Style>
+        <Style Selector="ui|NavigationViewItem uip|NavigationViewItemPresenter:selected Path">
+            <Setter Property="Fill" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+            <Setter Property="Stroke" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+        </Style>
+        <Style Selector="ui|NavigationViewItem uip|NavigationViewItemPresenter:selected /template/ ContentPresenter#ContentPresenter">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+        <Style Selector="ui|NavigationViewItem uip|NavigationViewItemPresenter:selected /template/ ContentPresenter#Icon">
+            <Setter Property="Foreground" Value="{DynamicResource AccentFillColorDefaultBrush}" />
+        </Style>
+    </UserControl.Styles>
+    <Grid RowDefinitions="Auto, *">
+        <Grid
+            Name="TitleBarHost"
+            Background="Transparent"
+            ColumnDefinitions="Auto,Auto,*">
+            <TextBlock
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                FontSize="12"
+                IsHitTestVisible="False"
+                Text="{Binding Title, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
+            <Border Grid.Column="2" Padding="6">
+                <AutoCompleteBox
+                    Name="SearchBox"
+                    MaxWidth="500"
+                    wnd:AppWindow.AllowInteractionInTitleBar="True"
+                    Classes="SampleApp"
+                    Items="{Binding MainSearchItems}"
+                    ValueMemberBinding="{Binding Header}"
+                    Watermark="Search games">
+                    <AutoCompleteBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Header}" />
+                        </DataTemplate>
+                    </AutoCompleteBox.ItemTemplate>
+                </AutoCompleteBox>
+            </Border>
+        </Grid>
+        <NavigationView
+            Grid.Row="1"
+            CompactPaneLength="72"
+            FooterMenuItems="{Binding Footer}"
+            IsPaneOpen="True"
+            IsPaneToggleButtonVisible="False"
+            IsSettingsVisible="False"
+            MenuItemTemplate="{Binding TemplateSelector}"
+            MenuItems="{Binding Menu}"
+            OpenPaneLength="72"
+            PaneDisplayMode="Left" />
+    </Grid>
 </UserControl>

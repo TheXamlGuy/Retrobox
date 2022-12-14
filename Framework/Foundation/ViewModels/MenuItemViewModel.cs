@@ -8,22 +8,31 @@ namespace Retrobox.Framework.Foundation;
 public partial class MenuItemViewModel : ObservableCollectionViewModel<MenuItemViewModel>
 {
     [ObservableProperty]
-    private string name;
+    private IMediator mediator;
 
+    [ObservableProperty]
+    private IContentTemplateSelector contentTemplateSelector;
 
     [ObservableProperty]
     private IconViewModel? icon;
 
     [ObservableProperty]
-    private ITemplateSelector templateSelector;
+    private bool isSelectable = false;
 
-    public MenuItemViewModel(string name, 
-        IconViewModel icon, 
-        ITemplateSelector templateSelector,
-        IMediator mediator) : base(mediator)
+    [ObservableProperty]
+    private bool isSelected;
+
+    [ObservableProperty]
+    private string name;
+
+    public MenuItemViewModel(IContentTemplateSelector contentTemplateSelector,
+        IMediator mediator,
+        string name,
+        bool isSelectable = false) : base(mediator)
     {
+        this.contentTemplateSelector = contentTemplateSelector;
+        this.mediator = mediator;
         this.name = name;
-        this.icon = icon;
-        this.templateSelector = templateSelector;
+        this.isSelectable = isSelectable;
     }
 }

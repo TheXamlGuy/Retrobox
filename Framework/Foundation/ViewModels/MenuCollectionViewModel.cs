@@ -8,6 +8,11 @@ public partial class MenuCollectionViewModel : ObservableCollectionViewModel<Men
 {
     public MenuCollectionViewModel(IMediator mediator) : base(mediator)
     {
-
+        Add("Nintendo");
+        Add("PC");
+        Add("Sega");
+        Add("Xbox");
+        Add("Playstation");
+        Add("Others");
     }
 }

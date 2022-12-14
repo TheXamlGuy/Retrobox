@@ -8,6 +8,6 @@ public partial class FooterCollectionViewModel : ObservableCollectionViewModel<M
 {
     public FooterCollectionViewModel(IMediator mediator) : base(mediator)
     {
-        Add<MenuItemViewModel>("Add", new AddPlatformIconViewModel());
+        Add("Add");
     }
 }

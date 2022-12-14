@@ -9,12 +9,13 @@ namespace Retrobox.Framework.Foundation;
 public partial class ObservableCollectionViewModel<T> : IList<T>, IList, IReadOnlyList<T>, INotifyCollectionChanged
 {
     public ObservableCollection<T> items = new();
+
     private readonly IMediator mediator;
 
     public ObservableCollectionViewModel(IMediator mediator)
     {
-       items.CollectionChanged += OnCollectionChanged;
         this.mediator = mediator;
+        items.CollectionChanged += OnCollectionChanged;
     }
 
     public event NotifyCollectionChangedEventHandler? CollectionChanged;
@@ -59,6 +60,15 @@ public partial class ObservableCollectionViewModel<T> : IList<T>, IList, IReadOn
             }
 
             this[index] = item!;
+        }
+    }
+
+    public async void Add(params object?[] parameters)
+    {
+        int index = items.Count;
+        if (await mediator.Send(new Create(typeof(T), parameters)) is object item)
+        {
+            InsertItem(index, (T)item);
         }
     }
 
