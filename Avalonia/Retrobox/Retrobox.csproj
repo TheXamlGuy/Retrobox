@@ -20,10 +20,6 @@
     <PackageReference Include="JsonPatch.Net" Version="2.0.4" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
     <PackageReference Include="Mediator.Abstractions" Version="2.1.0-preview.5" />
-    <PackageReference Include="Mediator.SourceGenerator" Version="2.1.0-preview.5">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="XamlNameReferenceGenerator" Version="1.5.1" />
   </ItemGroup>
@@ -46,8 +42,26 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\MenuItemView.axaml.cs">
-      <DependentUpon>MenuItemView.axaml</DependentUpon>
+    <Compile Update="Views\ManageLibraryView.axaml.cs">
+      <DependentUpon>ManageLibraryView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ManageLibraryMenuItemView.axaml.cs">
+      <DependentUpon>ManageLibraryMenuItemView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NintendoLibraryItemView.axaml.cs">
+      <DependentUpon>NintendoLibraryItemView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PersonalComputerLibraryItemView.axaml.cs">
+      <DependentUpon>PersonalComputerLibraryItemView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PlaystationLibraryItemView.axaml.cs">
+      <DependentUpon>PlaystationLibraryItemView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SegaLibraryItemView.axaml.cs">
+      <DependentUpon>SegaLibraryItemView.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\XboxLibraryItemView.axaml.cs">
+      <DependentUpon>XboxLibraryItemView.axaml</DependentUpon>
     </Compile>
   </ItemGroup>
   

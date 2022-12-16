@@ -1,7 +1,6 @@
 ﻿using Mediator;
 using System.Threading.Tasks;
 using System.Threading;
-using Retrobox.Views;
 using Avalonia.Controls;
 using Retrobox.Framework.Foundation;
 

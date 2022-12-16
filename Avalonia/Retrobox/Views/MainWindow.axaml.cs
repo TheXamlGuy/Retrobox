@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 using Avalonia.Media;
 using System;
 
-namespace Retrobox.Views;
+namespace Retrobox;
 
 public partial class MainWindow : AppWindow
 {

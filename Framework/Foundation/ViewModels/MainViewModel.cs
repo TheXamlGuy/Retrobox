@@ -14,19 +14,19 @@ public partial class MainViewModel
     private IMediator? mediator;
 
     [ObservableProperty]
-    private MenuCollectionViewModel menu;
+    private LibraryCollectionViewModel libraries;
 
     [ObservableProperty]
     private FooterCollectionViewModel footer;
 
     public MainViewModel(IMediator mediator,
         IContentTemplateSelector templateSelector,
-        MenuCollectionViewModel menu,
+        LibraryCollectionViewModel libraries,
         FooterCollectionViewModel footer)
     {
         this.mediator = mediator;
         this.templateSelector = templateSelector;
-        this.menu = menu;
+        this.libraries = libraries;
         this.footer = footer;
     }
 }

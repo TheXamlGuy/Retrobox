@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace Retrobox.Views;
+namespace Retrobox;
 
 public partial class MainView : UserControl
 {

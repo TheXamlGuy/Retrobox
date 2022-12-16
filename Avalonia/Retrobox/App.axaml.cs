@@ -2,13 +2,15 @@ using Avalonia;
 using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Retrobox.Views;
 using System;
 using System.IO;
 using Retrobox.Framework.Foundation;
 using Retrobox.Framework.Domain;
 using Toolkit.Framework.Foundation;
 using Toolkit.Framework.Avalonia;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Foundation;
+using Mediator;
 
 namespace Retrobox;
 
@@ -37,14 +39,13 @@ public partial class App : Application
             {
                 configuration.Add<MainWindowModel, MainWindow>();
                 configuration.Add<MainViewModel, MainView>("Main");
-                configuration.Add<MenuItemViewModel, MenuItemView>();
-                configuration.Add<SegaIconViewModel, SegaIconView>("SegaIcon");
-                configuration.Add<NintendoIconViewModel, NintendoIconView>("NintendoIcon");
-                configuration.Add<PlaystationIconViewModel, PlaystationIconView>("PlaystationIcon");
-                configuration.Add<XboxIconViewModel, XboxIconView>("XboxIcon");
-                configuration.Add<PersonalComputerIconViewModel, PersonalComputerView>("PCIcon");
-                configuration.Add<AddPlatformIconViewModel, AddPlatformIconView>("AddIcon");
-                configuration.Add<AddPlatformViewModel, AddPlatformView>();
+                configuration.Add<SegaLibraryItemViewModel, SegaLibraryItemView>();
+                configuration.Add<NintendoLibraryItemViewModel, NintendoLibraryItemView>();
+                configuration.Add<PlaystationLibraryItemViewModel, PlaystationLibraryItemView>();
+                configuration.Add<XboxLibraryItemViewModel, XboxLibraryItemView>();
+                configuration.Add<PersonalComputerLibraryItemViewModel, PersonalComputerLibraryItemView>();
+                configuration.Add<ManageLibraryMenuItemViewModel, ManageLibraryMenuItemView>();
+                configuration.Add<ManageLibraryViewModel, ManageLibraryView>("ManageLibrary");
             })
             .ConfigureServices(ConfigureServices)
         .Build();
@@ -55,10 +56,12 @@ public partial class App : Application
     {
         services.AddHostedService<AppService>()
             .AddFoundation()
-            .AddNavigation()
+            .AddAvalonia()
             .AddDomain()
-            .AddMediator(options => options.ServiceLifetime = ServiceLifetime.Transient)
-            .AddSingleton<MenuCollectionViewModel>()
+            .AddHandler<InitializedHandler>()
+            .AddHandler<MainWindowActivationHandler>()
+            .AddHandler<MainViewActivationHandler>()
+            .AddSingleton<LibraryCollectionViewModel>()
             .AddSingleton<FooterCollectionViewModel>();
     }
 }

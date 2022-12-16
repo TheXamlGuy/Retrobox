@@ -5,18 +5,26 @@ using Toolkit.Framework.Foundation;
 namespace Retrobox.Framework.Foundation;
 
 [INotifyPropertyChanged]
-public partial class MenuItemViewModel : ObservableCollectionViewModel<MenuItemViewModel>
+public partial class LibraryItemViewModel
 {
     [ObservableProperty]
     private IMediator mediator;
 
     [ObservableProperty]
+    private bool isOn;
+
+    [ObservableProperty]
     private IContentTemplateSelector contentTemplateSelector;
 
-    public MenuItemViewModel(IContentTemplateSelector contentTemplateSelector,
-        IMediator mediator) : base(mediator)
+    public LibraryItemViewModel(IContentTemplateSelector contentTemplateSelector,
+        IMediator mediator)
     {
         this.contentTemplateSelector = contentTemplateSelector;
         this.mediator = mediator;
+    }
+
+    partial void OnIsOnChanged(bool value)
+    {
+
     }
 }

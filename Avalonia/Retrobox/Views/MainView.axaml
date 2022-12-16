@@ -1,11 +1,19 @@
 <UserControl
-    x:Class="Retrobox.Views.MainView"
+    x:Class="Retrobox.MainView"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="using:FluentAvalonia.UI.Controls"
     xmlns:uip="using:FluentAvalonia.UI.Controls.Primitives"
     xmlns:wnd="using:FluentAvalonia.UI.Windowing">
     <UserControl.Styles>
+        <Style Selector="ui|NavigationView">
+            <Setter Property="IsPaneOpen" Value="False" />
+            <Setter Property="CompactPaneLength" Value="72" />
+            <Setter Property="IsPaneToggleButtonVisible" Value="False" />
+            <Setter Property="IsSettingsVisible" Value="False" />
+            <Setter Property="OpenPaneLength" Value="72" />
+            <Setter Property="PaneDisplayMode" Value="Left" />
+        </Style>
         <Style Selector="ui|NavigationViewItem">
             <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
         </Style>
@@ -133,14 +141,10 @@
         </Grid>
         <NavigationView
             Grid.Row="1"
-            CompactPaneLength="72"
             FooterMenuItems="{Binding Footer}"
-            IsPaneOpen="True"
-            IsPaneToggleButtonVisible="False"
-            IsSettingsVisible="False"
             MenuItemTemplate="{Binding TemplateSelector}"
-            MenuItems="{Binding Menu}"
-            OpenPaneLength="72"
-            PaneDisplayMode="Left" />
+            MenuItems="{Binding Libraries}">
+            <Frame />
+        </NavigationView>
     </Grid>
 </UserControl>
