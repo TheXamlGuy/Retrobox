@@ -4,7 +4,7 @@ using Mediator;
 namespace Retrobox.Framework.Foundation;
 
 [INotifyPropertyChanged]
-public partial class LibraryCollectionViewModel : ObservableCollectionViewModel<LibraryItemViewModel>
+public partial class LibraryCollectionViewModel : ObservableCollectionViewModel<ILibraryItemViewModel>
 {
     public LibraryCollectionViewModel(IMediator mediator) : base(mediator)
     {

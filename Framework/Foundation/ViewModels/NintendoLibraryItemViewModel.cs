@@ -1,13 +1,31 @@
-﻿using Mediator;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Foundation;
+using Mediator;
 using Toolkit.Framework.Foundation;
 
 namespace Retrobox.Framework.Foundation;
 
-public partial class NintendoLibraryItemViewModel : LibraryItemViewModel
+[INotifyPropertyChanged]
+public partial class NintendoLibraryItemViewModel : ILibraryItemViewModel
 {
-    public NintendoLibraryItemViewModel(IContentTemplateSelector contentTemplateSelector,
-        IMediator mediator) : base(contentTemplateSelector, mediator)
-    {
+    [ObservableProperty]
+    private bool isOn;
 
+    [ObservableProperty]
+    private IMediator mediator;
+
+    [ObservableProperty]
+    private IContentTemplateSelector contentTemplateSelector;
+
+    public NintendoLibraryItemViewModel(IMediator mediator,
+        IContentTemplateSelector contentTemplateSelector,
+        NintendoLibraryConfiguration configuration)
+    {
+        this.mediator = mediator;
+        this.contentTemplateSelector = contentTemplateSelector;
+
+        isOn = configuration.IsOn;
     }
+
+    partial void OnIsOnChanged(bool value) => mediator.Send(new Write<NintendoLibraryConfiguration>(args => args.IsOn = value));
 }

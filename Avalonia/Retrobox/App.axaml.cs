@@ -11,6 +11,8 @@ using Toolkit.Framework.Avalonia;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Foundation;
 using Mediator;
+using System.Reflection;
+using Microsoft.Extensions.Configuration;
 
 namespace Retrobox;
 
@@ -31,9 +33,13 @@ public partial class App : Application
             {
                 configuration.AddWritableJsonFile("Settings.json", false, true, writableConfiguration =>
                 {
-
+                    writableConfiguration.AddDefaultFileStream(Assembly.GetExecutingAssembly().ExtractResource("Settings.json")!)
+                       .AddDefaultConfiguration<NintendoLibraryConfiguration>("NintendoLibrary")
+                       .AddDefaultConfiguration<PersonalComputerLibraryConfiguration>("PersonalComputerLibrary")
+                       .AddDefaultConfiguration<PlaystationLibraryConfiguration>("PlaystationLibrary")
+                       .AddDefaultConfiguration<SegaLibraryConfiguration>("SegaLibrary")
+                       .AddDefaultConfiguration<XboxLibraryConfiguration>("XboxLibrary");
                 });
-
             })
             .ConfigureTemplates(configuration =>
             {
@@ -55,13 +61,18 @@ public partial class App : Application
     private void ConfigureServices(HostBuilderContext context, IServiceCollection services)
     {
         services.AddHostedService<AppService>()
-            .AddFoundation()
-            .AddAvalonia()
-            .AddDomain()
             .AddHandler<InitializedHandler>()
             .AddHandler<MainWindowActivationHandler>()
             .AddHandler<MainViewActivationHandler>()
             .AddSingleton<LibraryCollectionViewModel>()
-            .AddSingleton<FooterCollectionViewModel>();
+            .AddSingleton<FooterCollectionViewModel>()
+            .AddWritableConfiguration<NintendoLibraryConfiguration>(context.Configuration.GetSection("NintendoLibrary"))
+            .AddWritableConfiguration<PersonalComputerLibraryConfiguration>(context.Configuration.GetSection("PersonalComputerLibrary"))
+            .AddWritableConfiguration<PlaystationLibraryConfiguration>(context.Configuration.GetSection("PlaystationLibrary"))
+            .AddWritableConfiguration<SegaLibraryConfiguration>(context.Configuration.GetSection("SegaLibrary"))
+            .AddWritableConfiguration<XboxLibraryConfiguration>(context.Configuration.GetSection("XboxLibrary"))
+            .AddFoundation()
+            .AddAvalonia()
+            .AddDomain();
     }
 }

@@ -7,6 +7,8 @@
 
   <ItemGroup>
     <AvaloniaResource Include="Assets\**" />
+    <None Remove="Settings.json" />
+    <EmbeddedResource Include="Settings.json" />
     <TrimmerRootDescriptor Include="Roots.xml" />
   </ItemGroup>
 
@@ -14,10 +16,15 @@
     <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)" />
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0-preview1" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0-preview2" />
     <PackageReference Include="FluentAvalonia.UI.Windowing" Version="2.0.0-preview4" />
     <PackageReference Include="FluentAvaloniaUI" Version="2.0.0-preview4" />
+    <PackageReference Include="JsonCons.JsonPath" Version="1.1.0" />
     <PackageReference Include="JsonPatch.Net" Version="2.0.4" />
+    <PackageReference Include="Mediator.SourceGenerator" Version="2.1.0-preview.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
     <PackageReference Include="Mediator.Abstractions" Version="2.1.0-preview.5" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />

@@ -1,0 +1,17 @@
+﻿{
+  "NintendoLibrary": {
+    "IsOn": false
+  },
+  "PersonalComputerLibrary": {
+    "IsOn": false
+  },
+  "PlaystationLibrary": {
+    "IsOn": false
+  },
+  "SegaLibrary": {
+    "IsOn": false
+  },
+  "XboxLibrary": {
+    "IsOn": false
+  }
+}
