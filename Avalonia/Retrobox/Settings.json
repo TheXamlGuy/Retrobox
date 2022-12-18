@@ -13,5 +13,8 @@
   },
   "XboxLibrary": {
     "IsOn": false
+  },
+  "OtherLibrary": {
+    "IsOn": false
   }
 }

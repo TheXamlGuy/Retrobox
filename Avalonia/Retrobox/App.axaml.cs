@@ -8,11 +8,8 @@ using Retrobox.Framework.Foundation;
 using Retrobox.Framework.Domain;
 using Toolkit.Framework.Foundation;
 using Toolkit.Framework.Avalonia;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 using Foundation;
-using Mediator;
 using System.Reflection;
-using Microsoft.Extensions.Configuration;
 
 namespace Retrobox;
 
@@ -38,20 +35,26 @@ public partial class App : Application
                        .AddDefaultConfiguration<PersonalComputerLibraryConfiguration>("PersonalComputerLibrary")
                        .AddDefaultConfiguration<PlaystationLibraryConfiguration>("PlaystationLibrary")
                        .AddDefaultConfiguration<SegaLibraryConfiguration>("SegaLibrary")
-                       .AddDefaultConfiguration<XboxLibraryConfiguration>("XboxLibrary");
+                       .AddDefaultConfiguration<XboxLibraryConfiguration>("XboxLibrary")
+                       .AddDefaultConfiguration<OtherLibraryConfiguration>("OtherLibrary");
                 });
             })
-            .ConfigureTemplates(configuration =>
+            .ConfigureContents(configuration =>
             {
                 configuration.Add<MainWindowModel, MainWindow>();
                 configuration.Add<MainViewModel, MainView>("Main");
-                configuration.Add<SegaLibraryItemViewModel, SegaLibraryItemView>();
-                configuration.Add<NintendoLibraryItemViewModel, NintendoLibraryItemView>();
-                configuration.Add<PlaystationLibraryItemViewModel, PlaystationLibraryItemView>();
-                configuration.Add<XboxLibraryItemViewModel, XboxLibraryItemView>();
-                configuration.Add<PersonalComputerLibraryItemViewModel, PersonalComputerLibraryItemView>();
-                configuration.Add<ManageLibraryMenuItemViewModel, ManageLibraryMenuItemView>();
-                configuration.Add<ManageLibraryViewModel, ManageLibraryView>("ManageLibrary");
+                configuration.Add<SegaLibraryItemViewModel, SegaLibraryItemView>(ServiceLifetime.Singleton);
+                configuration.Add<SegaLibrarySettingViewModel, SegaLibrarySettingView>();
+                configuration.Add<NintendoLibraryItemViewModel, NintendoLibraryItemView>(ServiceLifetime.Singleton);
+                configuration.Add<NintendoLibrarySettingViewModel, NintendoLibrarySettingView>();
+                configuration.Add<PlaystationLibraryItemViewModel, PlaystationLibraryItemView>(ServiceLifetime.Singleton);
+                configuration.Add<PlaystationLibrarySettingViewModel, PlaystationLibrarySettingView>();
+                configuration.Add<XboxLibraryItemViewModel, XboxLibraryItemView>(ServiceLifetime.Singleton);
+                configuration.Add<XboxLibrarySettingViewModel, XboxLibrarySettingView>();
+                configuration.Add<PersonalComputerLibraryItemViewModel, PersonalComputerLibraryItemView>(ServiceLifetime.Singleton);
+                configuration.Add<PersonalComputerLibrarySettingViewModel, PersonalComputerLibrarySettingView>();
+                configuration.Add<ManageLibraryCollectionMenuItemViewModel, ManageLibraryMenuItemView>();
+                configuration.Add<ManageLibraryCollectionViewModel, ManageLibraryCollectionView>("ManageLibrary");
             })
             .ConfigureServices(ConfigureServices)
         .Build();
@@ -71,6 +74,7 @@ public partial class App : Application
             .AddWritableConfiguration<PlaystationLibraryConfiguration>(context.Configuration.GetSection("PlaystationLibrary"))
             .AddWritableConfiguration<SegaLibraryConfiguration>(context.Configuration.GetSection("SegaLibrary"))
             .AddWritableConfiguration<XboxLibraryConfiguration>(context.Configuration.GetSection("XboxLibrary"))
+            .AddWritableConfiguration<OtherLibraryConfiguration>(context.Configuration.GetSection("OtherLibrary"))
             .AddFoundation()
             .AddAvalonia()
             .AddDomain();

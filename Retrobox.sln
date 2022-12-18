@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Framework\Data\Data
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Foundation", "Framework\Foundation\Foundation.csproj", "{76F69A5C-84BA-449D-A7BC-683E12229911}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Framework\Domain\Domain.csproj", "{7D070CF2-D173-496B-A553-8960476939C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Framework\Domain\Domain.csproj", "{7D070CF2-D173-496B-A553-8960476939C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

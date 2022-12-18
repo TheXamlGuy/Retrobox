@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Mediator;
+using Toolkit.Framework.Foundation;
 
 namespace Retrobox.Framework.Foundation;
 

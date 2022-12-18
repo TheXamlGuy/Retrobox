@@ -1,24 +1,10 @@
-﻿using Mediator;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Threading;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia;
 using Toolkit.Framework.Foundation;
 
 namespace Retrobox;
-
-public class boo : INotification
-{
-
-}
-
-public class foo : INotificationHandler<boo>
-{
-    public ValueTask Handle(boo notification, CancellationToken cancellationToken)
-    {
-        throw new System.NotImplementedException();
-    }
-}
 
 public class InitializedHandler : IRequestHandler<Initialized>
 {

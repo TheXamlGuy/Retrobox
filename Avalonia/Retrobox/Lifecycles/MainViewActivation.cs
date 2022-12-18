@@ -1,5 +1,5 @@
 ﻿using Avalonia.Controls;
-using Mediator;
+using Toolkit.Framework.Foundation;
 
 namespace Retrobox;
 

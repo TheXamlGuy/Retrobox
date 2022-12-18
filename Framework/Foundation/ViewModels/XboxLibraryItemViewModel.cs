@@ -1,12 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Foundation;
-using Mediator;
 using Toolkit.Framework.Foundation;
 
 namespace Retrobox.Framework.Foundation;
 
-[INotifyPropertyChanged]
-public partial class XboxLibraryItemViewModel : ILibraryItemViewModel
+[ObservableObject]
+public partial class XboxLibraryItemViewModel : ILibraryItemViewModel,
+    INotificationHandler<ConfigurationChanged<XboxLibraryConfiguration>>
 {
     [ObservableProperty]
     private bool isOn;
@@ -14,18 +14,19 @@ public partial class XboxLibraryItemViewModel : ILibraryItemViewModel
     [ObservableProperty]
     private IMediator mediator;
 
-    [ObservableProperty]
-    private IContentTemplateSelector contentTemplateSelector;
-
     public XboxLibraryItemViewModel(IMediator mediator,
-        IContentTemplateSelector contentTemplateSelector,
         XboxLibraryConfiguration configuration)
     {
         this.mediator = mediator;
-        this.contentTemplateSelector = contentTemplateSelector;
+        mediator.Subscribe(this);
 
-        isOn = configuration.IsOn;
+        IsOn = configuration.IsOn;
     }
 
-    partial void OnIsOnChanged(bool value) => mediator.Send(new Write<XboxLibraryConfiguration>(args => args.IsOn = value));
+    public ValueTask Handle(ConfigurationChanged<XboxLibraryConfiguration> notification, 
+        CancellationToken cancellationToken)
+    {
+        IsOn = notification.Configuration.IsOn;
+        return default;
+    }
 }

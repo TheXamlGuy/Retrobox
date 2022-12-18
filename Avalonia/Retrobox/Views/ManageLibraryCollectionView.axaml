@@ -1,0 +1,10 @@
+<ContentDialog
+    x:Class="Retrobox.ManageLibraryCollectionView"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Libraries">
+    <ItemsControl
+        Width="500"
+        ItemTemplate="{Binding ContentTemplateSelector}"
+        Items="{Binding}" />
+</ContentDialog>

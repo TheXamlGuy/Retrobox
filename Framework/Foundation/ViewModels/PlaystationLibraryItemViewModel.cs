@@ -1,12 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Foundation;
-using Mediator;
 using Toolkit.Framework.Foundation;
 
 namespace Retrobox.Framework.Foundation;
 
 [INotifyPropertyChanged]
-public partial class PlaystationLibraryItemViewModel : ILibraryItemViewModel
+public partial class PlaystationLibraryItemViewModel : ILibraryItemViewModel,
+    INotificationHandler<ConfigurationChanged<PlaystationLibraryConfiguration>>
 {
     [ObservableProperty]
     private bool isOn;
@@ -14,18 +14,19 @@ public partial class PlaystationLibraryItemViewModel : ILibraryItemViewModel
     [ObservableProperty]
     private IMediator mediator;
 
-    [ObservableProperty]
-    private IContentTemplateSelector contentTemplateSelector;
-
     public PlaystationLibraryItemViewModel(IMediator mediator,
-        IContentTemplateSelector contentTemplateSelector,
         PlaystationLibraryConfiguration configuration)
     {
         this.mediator = mediator;
-        this.contentTemplateSelector = contentTemplateSelector;
+        mediator.Subscribe(this);
 
-        isOn = configuration.IsOn;
+        IsOn = configuration.IsOn;
     }
 
-    partial void OnIsOnChanged(bool value) => mediator.Send(new Write<PlaystationLibraryConfiguration>(args => args.IsOn = value));
+    public ValueTask Handle(ConfigurationChanged<PlaystationLibraryConfiguration> notification,
+        CancellationToken cancellationToken)
+    {
+        IsOn = notification.Configuration.IsOn;
+        return default;
+    }
 }

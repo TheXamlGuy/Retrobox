@@ -4,9 +4,9 @@ using Toolkit.Controls.Avalonia;
 
 namespace Retrobox;
 
-public partial class ManageLibraryView : ContentDialog, IStyleable
+public partial class ManageLibraryCollectionView : ContentDialog, IStyleable
 {
-    public ManageLibraryView()
+    public ManageLibraryCollectionView()
     {
         InitializeComponent();
     }

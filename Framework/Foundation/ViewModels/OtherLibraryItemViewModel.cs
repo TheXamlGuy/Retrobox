@@ -1,11 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Mediator;
+using Foundation;
 using Toolkit.Framework.Foundation;
 
 namespace Retrobox.Framework.Foundation;
 
 [INotifyPropertyChanged]
-public partial class OtherLibraryItemViewModel : ILibraryItemViewModel
+public partial class OtherLibraryItemViewModel : ILibraryItemViewModel,
+    INotificationHandler<ConfigurationChanged<OtherLibraryConfiguration>>
 {
     [ObservableProperty]
     private bool isOn;
@@ -17,14 +18,19 @@ public partial class OtherLibraryItemViewModel : ILibraryItemViewModel
     private IContentTemplateSelector contentTemplateSelector;
 
     public OtherLibraryItemViewModel(IMediator mediator,
-        IContentTemplateSelector contentTemplateSelector)
+        IContentTemplateSelector contentTemplateSelector,
+        OtherLibraryConfiguration configuration)
     {
         this.mediator = mediator;
         this.contentTemplateSelector = contentTemplateSelector;
+
+        IsOn = configuration.IsOn;
     }
 
-    partial void OnIsOnChanged(bool value)
+    public ValueTask Handle(ConfigurationChanged<OtherLibraryConfiguration> notification,
+        CancellationToken cancellationToken)
     {
-        Console.WriteLine($"Name is about to change to {value}");
+        IsOn = notification.Configuration.IsOn;
+        return default;
     }
 }

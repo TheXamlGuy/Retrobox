@@ -1,4 +1,4 @@
-﻿using Mediator;
+﻿using Toolkit.Framework.Foundation;
 
 namespace Retrobox.Framework.Domain;
 
