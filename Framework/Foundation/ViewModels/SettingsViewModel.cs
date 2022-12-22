@@ -4,12 +4,12 @@ using Toolkit.Framework.Foundation;
 namespace Retrobox.Framework.Foundation;
 
 [ObservableObject]
-public partial class MainWindowModel
+public partial class SettingsViewModel
 {
     [ObservableProperty]
     private IMediator? mediator;
 
-    public MainWindowModel(IMediator mediator)
+    public SettingsViewModel(IMediator mediator)
     {
         this.mediator = mediator;
     }

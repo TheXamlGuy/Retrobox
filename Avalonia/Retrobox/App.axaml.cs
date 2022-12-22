@@ -41,8 +41,9 @@ public partial class App : Application
             })
             .ConfigureContents(configuration =>
             {
-                configuration.Add<MainWindowModel, MainWindow>();
+                configuration.Add<MainWindowViewModel, MainWindow>();
                 configuration.Add<MainViewModel, MainView>("Main");
+                configuration.Add<SettingsViewModel, SettingsView>("Settings");
                 configuration.Add<SegaLibraryItemViewModel, SegaLibraryItemView>(ServiceLifetime.Singleton);
                 configuration.Add<SegaLibrarySettingViewModel, SegaLibrarySettingView>();
                 configuration.Add<NintendoLibraryItemViewModel, NintendoLibraryItemView>(ServiceLifetime.Singleton);

@@ -6,5 +6,4 @@
     Content="{NavigationRoute {Binding Mediator},
                               Window}"
     Loaded="{Navigate {Binding Mediator},
-                      Main,
-                      Route=Window}" />
+                      Main#Window}" />

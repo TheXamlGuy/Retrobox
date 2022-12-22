@@ -1,20 +1,6 @@
-<ContentDialog
+<UserControl
     x:Class="Retrobox.ManageLibraryCollectionView"
     xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia"
-    Title="Libraries">
-    <ContentDialog.Styles>
-        <Style Selector="ui|ContentDialog">
-            <Style Selector="^ui|ContentDialog /template/ Border[(Grid.Row)=1]">
-                <Setter Property="IsVisible" Value="False" />
-            </Style>
-        </Style>
-    </ContentDialog.Styles>
-    <Grid>
-        <ItemsControl
-            Width="500"
-            ItemTemplate="{Binding ContentTemplateSelector}"
-            Items="{Binding}" />
-    </Grid>
-</ContentDialog>
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ItemsControl ItemTemplate="{Binding ContentTemplateSelector}" Items="{Binding}" />
+</UserControl>

@@ -3,7 +3,7 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Invoked="{Navigate {Binding Mediator},
-                       ManageLibrary}"
+                       Settings/ManageLibrary#Settings}"
     SelectsOnInvoked="False">
     <NavigationViewItem.Icon>
         <ContentIcon>

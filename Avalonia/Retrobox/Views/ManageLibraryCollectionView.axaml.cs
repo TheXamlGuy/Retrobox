@@ -1,15 +1,11 @@
-using Avalonia.Styling;
-using System;
-using Toolkit.Controls.Avalonia;
+using Avalonia.Controls;
 
 namespace Retrobox;
 
-public partial class ManageLibraryCollectionView : ContentDialog, IStyleable
+public partial class ManageLibraryCollectionView : UserControl
 {
     public ManageLibraryCollectionView()
     {
         InitializeComponent();
     }
-
-    Type IStyleable.StyleKey => typeof(FluentAvalonia.UI.Controls.ContentDialog);
 }

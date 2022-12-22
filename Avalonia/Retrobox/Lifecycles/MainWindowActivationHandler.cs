@@ -9,10 +9,10 @@ namespace Retrobox;
 public class MainWindowActivationHandler : IRequestHandler<MainWindowActivation, Window>
 {
     private readonly MainWindow window;
-    private readonly MainWindowModel viewModel;
+    private readonly MainWindowViewModel viewModel;
 
-    public MainWindowActivationHandler(MainWindow window, 
-        MainWindowModel viewModel)
+    public MainWindowActivationHandler(MainWindow window,
+        MainWindowViewModel viewModel)
     {
         this.window = window;
         this.viewModel = viewModel;
