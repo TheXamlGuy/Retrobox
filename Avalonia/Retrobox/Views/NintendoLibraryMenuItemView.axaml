@@ -3,6 +3,8 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Content="Nintendo"
+    Invoked="{Navigate {Binding Mediator},
+                       Nintendo#Frame}"
     IsVisible="{Binding IsOn}">
     <NavigationViewItem.Icon>
         <ContentIcon>

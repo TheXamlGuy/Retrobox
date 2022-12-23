@@ -49,20 +49,20 @@
     <Compile Update="Views\ManageLibraryMenuItemView.axaml.cs">
       <DependentUpon>ManageLibraryMenuItemView.axaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\NintendoLibraryItemView.axaml.cs">
-      <DependentUpon>NintendoLibraryItemView.axaml</DependentUpon>
+    <Compile Update="Views\NintendoLibraryMenuItemView.axaml.cs">
+      <DependentUpon>NintendoLibraryMenuItemView.axaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\PersonalComputerLibraryItemView.axaml.cs">
-      <DependentUpon>PersonalComputerLibraryItemView.axaml</DependentUpon>
+    <Compile Update="Views\PersonalComputerLibraryMenuItemView.axaml.cs">
+      <DependentUpon>PersonalComputerLibraryMenuItemView.axaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\PlaystationLibraryItemView.axaml.cs">
-      <DependentUpon>PlaystationLibraryItemView.axaml</DependentUpon>
+    <Compile Update="Views\PlaystationLibraryMenuItemView.axaml.cs">
+      <DependentUpon>PlaystationLibraryMenuItemView.axaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\SegaLibraryItemView.axaml.cs">
-      <DependentUpon>SegaLibraryItemView.axaml</DependentUpon>
+    <Compile Update="Views\SegaLibraryMenuItemView.axaml.cs">
+      <DependentUpon>SegaLibraryMenuItemView.axaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\XboxLibraryItemView.axaml.cs">
-      <DependentUpon>XboxLibraryItemView.axaml</DependentUpon>
+    <Compile Update="Views\XboxLibraryMenuItemView.axaml.cs">
+      <DependentUpon>XboxLibraryMenuItemView.axaml</DependentUpon>
     </Compile>
   </ItemGroup>
   

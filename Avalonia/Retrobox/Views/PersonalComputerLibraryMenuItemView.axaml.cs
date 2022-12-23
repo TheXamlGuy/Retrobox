@@ -4,9 +4,9 @@ using Toolkit.Controls.Avalonia;
 
 namespace Retrobox;
 
-public partial class PersonalComputerLibraryItemView : NavigationViewItem, IStyleable
+public partial class PersonalComputerLibraryMenuItemView : NavigationViewItem, IStyleable
 {
-    public PersonalComputerLibraryItemView()
+    public PersonalComputerLibraryMenuItemView()
     {
         InitializeComponent();
     }

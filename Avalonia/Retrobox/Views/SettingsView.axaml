@@ -1,6 +1,60 @@
 <ContentDialog
     x:Class="Retrobox.SettingsView"
     xmlns="https://github.com/avaloniaui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Frame Content="{NavigationRoute {Binding Mediator}, Settings}" />
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="clr-namespace:FluentAvalonia.UI.Controls;assembly=FluentAvalonia">
+    <ContentDialog.Resources>
+        <ResourceDictionary>
+            <x:Double x:Key="ContentDialogMaxWidth">800</x:Double>
+            <Thickness x:Key="ContentDialogPadding">0</Thickness>
+            <Thickness x:Key="TopNavigationViewTopNavGridMargin">4</Thickness>
+        </ResourceDictionary>
+    </ContentDialog.Resources>
+    <ContentDialog.Styles>
+        <Style Selector="ui|ContentDialog">
+            <Style Selector="^ui|ContentDialog /template/ Border[(Grid.Row)=1]">
+                <Setter Property="IsVisible" Value="False" />
+            </Style>
+            <Style Selector="^ui|ContentDialog /template/ ContentControl#Title">
+                <Setter Property="IsVisible" Value="False" />
+            </Style>
+        </Style>
+    </ContentDialog.Styles>
+    <Grid Background="{DynamicResource SolidBackgroundFillColorBase}">
+        <NavigationView
+            Background="{DynamicResource SolidBackgroundFillColorBase}"
+            IsBackButtonVisible="False"
+            IsBackEnabled="False"
+            IsPaneToggleButtonVisible="False"
+            IsSettingsVisible="False"
+            PaneDisplayMode="Top">
+            <NavigationView.Resources>
+                <SolidColorBrush x:Key="NavigationViewContentBackground" Color="Transparent" />
+                <SolidColorBrush x:Key="NavigationViewContentGridBorderBrush" Color="Transparent" />
+            </NavigationView.Resources>
+            <NavigationView.MenuItems>
+                <NavigationViewItem Content="Libaries" IsSelected="True" />
+            </NavigationView.MenuItems>
+            <Frame
+                Width="600"
+                Margin="12,0,12,12"
+                Content="{NavigationRoute {Binding Mediator},
+                                          Settings}" />
+        </NavigationView>
+        <Button
+            x:Name="ButtonClose"
+            Width="36"
+            Height="36"
+            Margin="0,12,12,0"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Background="Transparent"
+            BorderBrush="Transparent"
+            Click="{Invoke {Binding $parent[ContentDialog].Hide}}">
+            <FontIcon
+                FontFamily="{DynamicResource SymbolThemeFontFamily}"
+                FontSize="12"
+                Glyph="&#xE8BB;" />
+        </Button>
+    </Grid>
 </ContentDialog>

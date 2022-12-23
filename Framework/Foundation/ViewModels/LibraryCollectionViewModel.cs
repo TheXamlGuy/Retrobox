@@ -4,15 +4,14 @@ using Toolkit.Framework.Foundation;
 namespace Retrobox.Framework.Foundation;
 
 [INotifyPropertyChanged]
-public partial class LibraryCollectionViewModel : ObservableCollectionViewModel<ILibraryItemViewModel>
+public partial class LibraryCollectionViewModel : ObservableCollectionViewModel<ILibraryMenuItemViewModel>
 {
     public LibraryCollectionViewModel(IMediator mediator) : base(mediator)
     {
-        Add<NintendoLibraryItemViewModel>();
-        Add<PersonalComputerLibraryItemViewModel>();
-        Add<SegaLibraryItemViewModel>();
-        Add<XboxLibraryItemViewModel>();
-        Add<PlaystationLibraryItemViewModel>();
-        Add<OtherLibraryItemViewModel>();
+        Add<NintendoLibraryMenuItemViewModel>();
+        Add<PersonalComputerLibraryMenuItemViewModel>();
+        Add<SegaLibraryMenuItemViewModel>();
+        Add<XboxLibraryMenuItemViewModel>();
+        Add<PlaystationLibraryMenuItemViewModel>();
     }
 }

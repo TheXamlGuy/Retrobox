@@ -20,6 +20,5 @@ public partial class ManageLibraryCollectionViewModel :
         Add<SegaLibrarySettingViewModel>();
         Add<XboxLibrarySettingViewModel>();
         Add<PlaystationLibrarySettingViewModel>();
-        Add<OtherLibrarySettingViewModel>();
     }
 }

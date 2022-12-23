@@ -1,8 +1,10 @@
 <NavigationViewItem
-    x:Class="Retrobox.XboxLibraryItemView"
+    x:Class="Retrobox.XboxLibraryMenuItemView"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Content="Xbox"
+    Invoked="{Navigate {Binding Mediator},
+                       Xbox#Frame}"
     IsVisible="{Binding IsOn}">
     <NavigationViewItem.Icon>
         <ContentIcon>

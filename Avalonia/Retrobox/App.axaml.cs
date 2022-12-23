@@ -44,16 +44,27 @@ public partial class App : Application
                 configuration.Add<MainWindowViewModel, MainWindow>();
                 configuration.Add<MainViewModel, MainView>("Main");
                 configuration.Add<SettingsViewModel, SettingsView>("Settings");
-                configuration.Add<SegaLibraryItemViewModel, SegaLibraryItemView>(ServiceLifetime.Singleton);
+
+                configuration.Add<SegaLibraryMenuItemViewModel, SegaLibraryMenuItemView>(ServiceLifetime.Singleton);
+                configuration.Add<SegaLibraryViewModel, SegaLibraryView>("Sega");
                 configuration.Add<SegaLibrarySettingViewModel, SegaLibrarySettingView>();
-                configuration.Add<NintendoLibraryItemViewModel, NintendoLibraryItemView>(ServiceLifetime.Singleton);
+
+                configuration.Add<NintendoLibraryMenuItemViewModel, NintendoLibraryItemView>(ServiceLifetime.Singleton);
+                configuration.Add<NintendoLibraryViewModel, NintendoLibraryView>("Nintendo");
                 configuration.Add<NintendoLibrarySettingViewModel, NintendoLibrarySettingView>();
-                configuration.Add<PlaystationLibraryItemViewModel, PlaystationLibraryItemView>(ServiceLifetime.Singleton);
+
+                configuration.Add<PlaystationLibraryMenuItemViewModel, PlaystationLibraryMenuItemView>(ServiceLifetime.Singleton);
+                configuration.Add<PlaystationLibraryViewModel, PlaystationLibraryView>("Playstation");
                 configuration.Add<PlaystationLibrarySettingViewModel, PlaystationLibrarySettingView>();
-                configuration.Add<XboxLibraryItemViewModel, XboxLibraryItemView>(ServiceLifetime.Singleton);
+
+                configuration.Add<XboxLibraryMenuItemViewModel, XboxLibraryMenuItemView>(ServiceLifetime.Singleton);
+                configuration.Add<XboxLibraryViewModel, XboxLibraryView>("Xbox");
                 configuration.Add<XboxLibrarySettingViewModel, XboxLibrarySettingView>();
-                configuration.Add<PersonalComputerLibraryItemViewModel, PersonalComputerLibraryItemView>(ServiceLifetime.Singleton);
+
+                configuration.Add<PersonalComputerLibraryMenuItemViewModel, PersonalComputerLibraryMenuItemView>(ServiceLifetime.Singleton);
+                configuration.Add<PersonalComputerLibraryViewModel, PersonalComputerLibraryView>("PersonalComputer");
                 configuration.Add<PersonalComputerLibrarySettingViewModel, PersonalComputerLibrarySettingView>();
+
                 configuration.Add<ManageLibraryCollectionMenuItemViewModel, ManageLibraryMenuItemView>();
                 configuration.Add<ManageLibraryCollectionViewModel, ManageLibraryCollectionView>("ManageLibrary");
             })

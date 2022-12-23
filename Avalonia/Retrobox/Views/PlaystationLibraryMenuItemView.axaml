@@ -1,8 +1,10 @@
 <NavigationViewItem
-    x:Class="Retrobox.PlaystationLibraryItemView"
+    x:Class="Retrobox.PlaystationLibraryMenuItemView"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Content="Playstation"
+    Invoked="{Navigate {Binding Mediator},
+                       Playstation#Frame}"
     IsVisible="{Binding IsOn}">
     <NavigationViewItem.Icon>
         <ContentIcon>

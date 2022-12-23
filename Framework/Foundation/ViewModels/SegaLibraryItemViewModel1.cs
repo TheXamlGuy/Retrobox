@@ -3,7 +3,7 @@
 namespace Retrobox.Framework.Foundation;
 
 [INotifyPropertyChanged]
-public partial class NintendoLibraryItemViewModel : ILibraryViewModel
+public partial class SegaLibraryItemViewModel : ILibraryViewModel
 {
 
 }

@@ -1,6 +1,6 @@
 ﻿namespace Retrobox.Framework.Foundation;
 
-public interface ILibraryItemViewModel
+public interface ILibraryViewModel
 {
 
 }

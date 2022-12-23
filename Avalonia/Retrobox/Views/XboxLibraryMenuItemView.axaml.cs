@@ -4,9 +4,9 @@ using Toolkit.Controls.Avalonia;
 
 namespace Retrobox;
 
-public partial class PlaystationLibraryItemView : NavigationViewItem, IStyleable
+public partial class XboxLibraryMenuItemView : NavigationViewItem, IStyleable
 {
-    public PlaystationLibraryItemView()
+    public XboxLibraryMenuItemView()
     {
         InitializeComponent();
     }

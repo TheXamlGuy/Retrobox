@@ -144,7 +144,7 @@
             FooterMenuItems="{Binding Footer}"
             MenuItemTemplate="{Binding TemplateSelector}"
             MenuItems="{Binding Libraries}">
-            <Frame />        
+            <Frame Content="{NavigationRoute {Binding Mediator}, Frame}" />
         </NavigationView>
     </Grid>
 </UserControl>

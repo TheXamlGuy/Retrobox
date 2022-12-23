@@ -1,8 +1,10 @@
 <NavigationViewItem
-    x:Class="Retrobox.SegaLibraryItemView"
+    x:Class="Retrobox.SegaLibraryMenuItemView"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Content="Sega"
+    Invoked="{Navigate {Binding Mediator},
+                       Sega#Frame}"
     IsVisible="{Binding IsOn}">
     <NavigationViewItem.Icon>
         <ContentIcon>

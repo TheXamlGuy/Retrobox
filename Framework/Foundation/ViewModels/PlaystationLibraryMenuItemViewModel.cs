@@ -5,8 +5,8 @@ using Toolkit.Framework.Foundation;
 namespace Retrobox.Framework.Foundation;
 
 [INotifyPropertyChanged]
-public partial class SegaLibraryMenuItemViewModel : ILibraryMenuItemViewModel,
-    INotificationHandler<ConfigurationChanged<SegaLibraryConfiguration>>
+public partial class PlaystationLibraryMenuItemViewModel : ILibraryMenuItemViewModel,
+    INotificationHandler<ConfigurationChanged<PlaystationLibraryConfiguration>>
 {
     [ObservableProperty]
     private bool isOn;
@@ -14,8 +14,8 @@ public partial class SegaLibraryMenuItemViewModel : ILibraryMenuItemViewModel,
     [ObservableProperty]
     private IMediator mediator;
 
-    public SegaLibraryMenuItemViewModel(IMediator mediator,
-        SegaLibraryConfiguration configuration)
+    public PlaystationLibraryMenuItemViewModel(IMediator mediator,
+        PlaystationLibraryConfiguration configuration)
     {
         this.mediator = mediator;
         mediator.Subscribe(this);
@@ -23,7 +23,7 @@ public partial class SegaLibraryMenuItemViewModel : ILibraryMenuItemViewModel,
         IsOn = configuration.IsOn;
     }
 
-    public ValueTask Handle(ConfigurationChanged<SegaLibraryConfiguration> notification, 
+    public ValueTask Handle(ConfigurationChanged<PlaystationLibraryConfiguration> notification,
         CancellationToken cancellationToken)
     {
         IsOn = notification.Configuration.IsOn;

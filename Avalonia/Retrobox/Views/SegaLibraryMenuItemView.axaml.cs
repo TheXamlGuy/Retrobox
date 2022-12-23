@@ -4,9 +4,9 @@ using Toolkit.Controls.Avalonia;
 
 namespace Retrobox;
 
-public partial class SegaLibraryItemView : NavigationViewItem, IStyleable
+public partial class SegaLibraryMenuItemView : NavigationViewItem, IStyleable
 {
-    public SegaLibraryItemView()
+    public SegaLibraryMenuItemView()
     {
         InitializeComponent();
     }
